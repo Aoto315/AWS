@@ -32,6 +32,7 @@ public class Jyanken1 {
 			// 入力された数字を変数Playerに格納
 			int Player = Integer.parseInt(scanner.nextLine());
 
+			// Playerが1か2か3以外の数字を入力した場合じゃんけんゲームはPlayできない
 			if (Player == 1 || Player == 2 || Player == 3) {
 
 				// コンピュータ用に乱数を生成し変数computerに格納
