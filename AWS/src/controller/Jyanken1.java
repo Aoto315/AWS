@@ -18,7 +18,7 @@ public class Jyanken1 {
 		int Lose = 0;
 		// ゲームの繰り返しを制御する(trueだと繰り返し)
 		boolean playAgain = true;
-
+//a
 		// Scannerクラス
 		Scanner scanner = new Scanner(System.in);
 		Random rand = new Random();
