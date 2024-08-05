@@ -18,7 +18,7 @@ public class Jyanken1 {
 		int Lose = 0;
 		// ゲームの繰り返しを制御する(trueだと繰り返し)
 		boolean playAgain = true;
-//a
+
 		// Scannerクラス
 		Scanner scanner = new Scanner(System.in);
 		Random rand = new Random();
@@ -104,6 +104,8 @@ public class Jyanken1 {
 				if (answer == 2) { // Playerが「いいえ」を選んだ場合
 					playAgain = false; // 繰り返しを終了する
 				}
+			}else {
+				System.out.println("入力数字が間違っています。");
 			}
 		}
 		// スキャナーを閉じる
