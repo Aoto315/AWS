@@ -1,12 +1,17 @@
 import java.util.Scanner;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class Option {
+
+	private static final Logger LOGGER = LogManager.getLogger(Option.class);
+
 	public static void select() {
 		Scanner scanner = new Scanner(System.in);
 
 		while (true) { // 無限ループでメニューを表示し続ける
-			System.out.println("1~3で番号を入力してください");
-			System.out.println("1.じゃんけんをする,2.対戦戦績を表示する,3.終了する");
+			LOGGER.info("1~3で番号を入力してください");
+			LOGGER.info("1.じゃんけんをする,2.対戦戦績を表示する,3.終了する");
 
 			int option = scanner.nextInt();
 
@@ -18,17 +23,17 @@ public class Option {
 					Result.showMatchRecord();
 					break;
 				case 3:
-					System.out.println("プログラムを終了します");
+					LOGGER.info("プログラムを終了します");
 					scanner.close();
 					return; // プログラムを終了
 				default:
-					System.out.println("入力した数値は無効です。もう一度入力してください。");
+					LOGGER.info("入力した数値は無効です。もう一度入力してください。");
 					break;
 			}
 		}
 	}
-	public static void main(String[] args) {
-        select(); // メニュー選択を開始
-    }
-}
 
+	public static void main(String[] args) {
+		select(); // メニュー選択を開始
+	}
+}

@@ -29,7 +29,7 @@ public class Game {
 //			System.out.println("勝負する手を数字で入力してください。0.グー、1.チョキ、2.パー");
 
 			if (!scanner.hasNextInt()) {
-				System.out.println("無効な入力です。数値を入力してください。");
+				LOGGER.info("無効な入力です。数値を入力してください。");
 				scanner.next(); // 不正な入力を消費
 				continue;
 			}
@@ -39,8 +39,8 @@ public class Game {
 
 			// 入力チェック
 			while (userHands < 0 || userHands > 2) {
-				System.out.println("無効な値です。");
-				System.out.println("勝負する手を数字で入力してください。0.グー、1.チョキ、2.パー");
+				LOGGER.info("無効な値です。");
+				LOGGER.info("勝負する手を数字で入力してください。0.グー、1.チョキ、2.パー");
 				userHands = scanner.nextInt();
 			}
 
@@ -61,9 +61,9 @@ public class Game {
 
 			// 判定結果の表示
 			String[] hands = { "グー", "チョキ", "パー" };
-			System.out.println("Player: " + hands[userHands] + ", Computer: "
+			LOGGER.info("Player: " + hands[userHands] + ", Computer: "
 					+ hands[computerHands]);
-			System.out.println("結果：" + winOrLose);
+			LOGGER.info("結果：" + winOrLose);
 
 			// データベースに結果を保存
 			saveResultToDatabase(winOrLose);
@@ -91,11 +91,11 @@ public class Game {
 
 			int rowsAffected = preparedStatement.executeUpdate();
 			if (rowsAffected > 0) {
-				System.out.println("結果がデータベースに保存されました。");
+				LOGGER.info("結果がデータベースに保存されました。");
 			}
 
 		} catch (SQLException e) {
-			System.out.println("データベースへの保存に失敗しました。");
+			LOGGER.info("データベースへの保存に失敗しました。");
 			e.printStackTrace();
 		}
 	}
