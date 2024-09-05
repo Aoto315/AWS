@@ -16,6 +16,7 @@ public class Result {
 	private static final Logger LOGGER = LogManager.getLogger(Result.class);
 
 	public static void showMatchRecord() {
+		//入力を促す
 		LOGGER.info("1~2で番号を入力してください");
 		LOGGER.info("1.過去10回の対戦成績を表示する,2.月別の対戦戦績を表示する");
 
@@ -24,12 +25,14 @@ public class Result {
 		// 数字を読み取る
 		int userResult = scanner.nextInt();
 
+		//DBへの接続
 		try (Connection connection
 				= DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
 			if (userResult == 1) {
 				// 過去10回の記録を取得
 				String past10Query
 						= "SELECT * FROM jyanken ORDER BY date DESC LIMIT 10";
+				//結果セットを取得する
 				try (PreparedStatement statement
 						= connection.prepareStatement(past10Query);
 						ResultSet resultSet = statement.executeQuery()) {
@@ -48,6 +51,7 @@ public class Result {
 						"見たい月の数字を2桁になるように入力してください (01: 1月, 02: 2月, ..., 12: 12月)");
 				int month = scanner.nextInt();
 
+				//対戦回数、勝ち数、負け数、引き分け数を集計し降順に並べる
 				String monthlyQuery
 						= "SELECT DATE_FORMAT(date, '%Y-%m') AS month, "
 								+ "COUNT(*) AS count, "

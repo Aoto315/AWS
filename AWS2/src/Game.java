@@ -81,11 +81,12 @@ public class Game {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String currentDate = dateFormat.format(new Date());
 
+		//データベース接続
 		try (Connection connection
 				= DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement preparedStatement
 						= connection.prepareStatement(query)) {
-
+			//1に日付、2に対戦結果を設定する
 			preparedStatement.setString(1, currentDate);
 			preparedStatement.setString(2, winOrLose);
 
