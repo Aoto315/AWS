@@ -15,6 +15,7 @@ public class Option {
 
 			int option = scanner.nextInt();
 
+			//入力された数字によって処理を行う
 			switch (option) {
 				case 1:
 					Game.play();
